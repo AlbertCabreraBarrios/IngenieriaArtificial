@@ -6,7 +6,7 @@ A continuación se muestra un ejemplo del uso de face-api.js
 
 [![Face](/readme_image/Imagen1.png)](img/readme_image/Imagen1.png)
 
-[![Face Api](/readme_image/Imagen2.png)](readme_image/Imagen2png)
+[![Face Api](/readme_image/Imagen2.png)](readme_image/Imagen2.png)
 
 
 
