@@ -8,6 +8,10 @@ A continuación se muestra un ejemplo del uso de face-api.js
 
 [![Face Api](/readme_image/Imagen2.png)](readme_image/Imagen2.png)
 
+[![Face Api](/readme_image/Imagen3.png)](readme_image/Imagen3.png)
+
+[![Face Api](/readme_image/Imagen4.png)](readme_image/Imagen4.png)
+
 
 
 

@@ -6,8 +6,21 @@ import mapDispatchToProps from './mapDispatchToProps';
 import Camera from './Camera'; 
 import Canva from './Canva'; 
 import * as faceapi from 'face-api.js';
-import ScrollButton from './ScrollButton';
-
+import Navidad1 from './icono/gorro1.svg'
+import Navidad2 from './icono/gorro2.svg'
+import Navidad3 from './icono/gorro3.svg'
+import Navidad4 from './icono/gorro4.svg'
+import Navidad5 from './icono/gorro5.svg'
+import Navidad6 from './icono/gorro6.svg'
+import Navidad7 from './icono/gorro7.svg'
+import Navidad8 from './icono/gorro8.svg'
+import Navidad9 from './icono/gorro9.svg'
+import Navidad10 from './icono/gorro10.svg'
+import Navidad11 from './icono/gorro11.svg'
+import Navidad12 from './icono/gorro12.svg'
+import Navidad13 from './icono/gorro13.svg'
+import Navidad14 from './icono/gorro14.svg'
+import Navidad15 from './icono/gorro15.svg'
 
 class FacePage extends Component {
     constructor(props) {
@@ -35,8 +48,8 @@ class FacePage extends Component {
                     console.log("face detected",1);
                     const dims = faceapi.matchDimensions(this.props.canvas.current, this.props.video.current, true);
                     const resizedResult = faceapi.resizeResults(result, dims);
-                    faceapi.draw.drawDetections(this.props.canvas.current, resizedResult);
-                    faceapi.draw.drawFaceLandmarks(this.props.canvas.current, resizedResult);
+   //para no mostrar el cuadro                  faceapi.draw.drawDetections(this.props.canvas.current, resizedResult);
+    //para no mostrar el cuadro                 faceapi.draw.drawFaceLandmarks(this.props.canvas.current, resizedResult);
                     
                     const currentCanvas = ReactDOM.findDOMNode(this.props.canvas.current);
                     var canvasElement = currentCanvas.getContext("2d");
@@ -55,8 +68,8 @@ class FacePage extends Component {
         }
         setTimeout(() => this.setVideoHandler());
     }
-
-    addBoxIndexOfLandmark(canvasElement,landkmarkPosition){
+ //se comento esto para o mostrar el cuadrito que recorre los lamdmarks
+   /* addBoxIndexOfLandmark(canvasElement,landkmarkPosition){
         let width=10, height=10;
         canvasElement.setTransform(1, 0, 0, 1, 0, 0);
         canvasElement.fillStyle = 'rgb(255, 87, 51)'; 
@@ -64,7 +77,7 @@ class FacePage extends Component {
         canvasElement.closePath();
         canvasElement.setTransform(1, 0, 0, 1, 0, 0);
     }
-    
+    */  
     addBackgroundInformation(canvasElement,result){
         let positionX=result.landmarks.positions[8].x,
             positionY=result.landmarks.positions[8].y+10;
@@ -166,7 +179,12 @@ class FacePage extends Component {
         // asignar los archivos del model a face-api
         let modelFolder="/models";
 
-        let dirs ={Navidad1:'/filter3/gorro1.svg',Navidad2:'/filter3/gorro2.svg'}
+        let dirs ={Navidad1: '/filter3/gorro1.svg', Navidad2: '/filter3//gorro2.svg', Navidad3: '/filter3//gorro3.svg',
+        Navidad4: '/filter3/gorro4.svg', Navidad5: '/filter3//gorro5.svg', Navidad6: '/filter3//gorro6.svg',
+        Navidad7: '/filter3/gorro7.svg', Navidad8: '/filter3//gorro8.svg', Navidad9: '/filter3//gorro9.svg',
+        Navidad10: '/filter3/gorro10.svg', Navidad11: '/filter3//gorro11.svg', Navidad12: '/filter3//gorro12.svg',
+        Navidad13: '/filter3/gorro13.svg', Navidad14: '/filter3//gorro14.svg', Navidad15: '/filter3//gorro15.svg'
+    }
        let valor ='Navidad1'
 
         try{
@@ -235,13 +253,7 @@ class FacePage extends Component {
             ? new faceapi.SsdMobilenetv1Options({ minConfidence })
             : new faceapi.TinyFaceDetectorOptions({ inputSize, scoreThreshold });
         this.props.SET_DETECTOR_OPTIONS_IN_GAME_FACENET(options);
-    }
-
-    switchFilter(e) {
-
-
-        this.setState({ filterName: e.target.value })
-        console.log(this.state.filterName)
+   
     }
  
  
@@ -256,26 +268,26 @@ class FacePage extends Component {
                     value={this.state.positionIndex} 
                     onChange={(event)=>{this.setState({positionIndex: event.target.value})}}/>       
 
-                <button type="button" value='Navidad1' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 1</button>
-                <button type="button" value='Navidad2' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 2</button>
-                <button type="button" value='Navidad3' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 3</button>
-                <button type="button" value='Navidad4' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 4</button>
-                <button type="button" value='Navidad5' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 5</button>
-                <button type="button" value='Navidad6' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 6</button>
-                <button type="button" value='Navidad7' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 7</button>
-                <button type="button" value='Navidad8' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 8</button>
-                <button type="button" value='Navidad9' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 9</button>
-                <button type="button" value='Navidad10' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 10</button>
-                <button type="button" value='Navidad11' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 11</button>
-                <button type="button" value='Navidad12' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 12</button>
-                <button type="button" value='Navidad13' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 13</button>
-                <button type="button" value='Navidad14' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 14</button>
-                <button type="button" value='Navidad15' onClick={(event) => { this.setState({ filterName: event.target.value }) }}>FILTRO 15</button>
+                <button type="button" value='Navidad1' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad1} width="20" height="20"></img>FILTRO 1</button>
+                <button type="button" value='Navidad2' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad2} width="20" height="20"></img>FILTRO 2</button>
+                <button type="button" value='Navidad3' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad3} width="20" height="20"></img>FILTRO 3</button>
+                <button type="button" value='Navidad4' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad4} width="20" height="20"></img>FILTRO 4</button>
+                <button type="button" value='Navidad5' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad5} width="20" height="20"></img>FILTRO 5</button>
+                <button type="button" value='Navidad6' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad6} width="20" height="20"></img>FILTRO 6</button>
+                <button type="button" value='Navidad7' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad7} width="20" height="20"></img>FILTRO 7</button>
+                <button type="button" value='Navidad8' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad8} width="20" height="20"></img>FILTRO 8</button>
+                <button type="button" value='Navidad9' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad9} width="20" height="20"></img>FILTRO 9</button>
+                <button type="button" value='Navidad10' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad10} width="20" height="20"></img>FILTRO 10</button>
+                <button type="button" value='Navidad11' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad11} width="20" height="20"></img>FILTRO 11</button>
+                <button type="button" value='Navidad12' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad12} width="20" height="20"></img>FILTRO 12</button>
+                <button type="button" value='Navidad13' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad13} width="20" height="20"></img>FILTRO 13</button>
+                <button type="button" value='Navidad14' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad14} width="20" height="20"></img>FILTRO 14</button>
+                <button type="button" value='Navidad15' onClick={(event) => { this.setState({ filterName: event.target.value }) }}><img src={Navidad15} width="20" height="20"></img>FILTRO 15</button>
 
-                <h1>{this.state.filterName}</h1>
+                
                
      
-                <ScrollButton />
+                
             </div>            
         )
     }
